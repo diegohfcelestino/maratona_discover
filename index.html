@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="./style.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap" rel="stylesheet">
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     </head>
     <body>
         <header>
@@ -48,15 +49,19 @@
                     <p id="totalDisplay">R$ 0,00</p>
                 </div>
                 
-            </section>
+            </section>  
 
             <section id="transaction">
                 <h2 class="sr-only">Transações</h2>
 
                 <a href="#" 
-                onclick="Modal.open()"
+                onclick="Modal.openSimple()"
                 class="button new">+ Nova Transação</a>
-                
+                <!--Adicionado a transação parcelada-->
+                <a href="#" 
+                onclick="Modal.openMult()"
+                class="button new">+ Nova Transação Parcelada</a>        
+            
                 <table id="data-table">
                     <thead>
                         <tr>
@@ -69,14 +74,36 @@
                     <tbody>
                     </tbody>
                 </table>
+
             </section>
+            <!--Adicionado os gráficos-->
+            <div>
+                <h3 id="title-grafics" >Gráficos das Transações</h3>
+            </div>
+            <section id="graphics">
+                <h2 class="sr-only">Gráficos</h2>
+                <div class="card">
+                    <h2 class="sr-only">Gráfico de entradas</h2>
+                    <div id="income_chart_div"></div>
+                </div>
+                <div class="card">
+                    <h2 class="sr-only">Gráfico de saídas</h2>
+                    <div id="expense_chart_div"></div>
+                </div>
+                <div class="card">
+                    <h2 class="sr-only">Gráfico dos totais</h2>
+                    <div id="total_chart_div"></div>
+                </div>
+            </section>
+
+            
         </main>
 
-        <div class="modal-overlay">
+        <div class="modal-overlay simple">
             <div class="modal">
                 <div id="form">
                     <h2>Nova Transação</h2>
-                    <form action="" onsubmit="Form.submit(event)">
+                    <form action="" onsubmit="Form.submit(event, 'simple')">
                         <div class="input-group">
                             <label 
                                 class="sr-only" 
@@ -126,9 +153,76 @@
             </div>
         </div>
 
-        <footer>
-            <p>dev.finance$</p>
-            <p id="developer">Desenvolvido por Diego Ferreira</p>
+        <div class="modal-overlay mult">
+            <div class="modal">
+                <div id="form">
+                    <h2>Nova Transação Parcelada</h2>
+                    <form action="" onsubmit="Form.submit(event, 'mult')">
+                        <div class="input-group">
+                            <label 
+                                class="sr-only" 
+                                for="descriptionM">Descrição</label>
+                            <input 
+                                type="text" 
+                                id="descriptionM" 
+                                name="descriptionM"
+                                placeholder="Descrição"
+                            />
+                        </div>
+
+                        <div class="input-group">
+                            <label 
+                                class="sr-only" 
+                                for="partM">Parcelas</label>
+                            <input 
+                                type="number"
+                                step="1"
+                                id="partM" 
+                                name="partM"
+                                placeholder="Parcelas"
+                            />
+                            <small class="help">O número de parcelas irá se repetir na quantidade e valor informado seguindo o mesmo dia da primeira parcela.</small>
+                        </div>
+
+                        <div class="input-group">
+                            <label 
+                                class="sr-only" 
+                                for="amountM">Valor</label>
+                            <input 
+                                type="number"
+                                step="0.01"
+                                id="amountM" 
+                                name="amountM"
+                                placeholder="0,00"
+                            />
+                            <small class="help">Use o sinal - (negativo) para despesas e , (vírgula) para casas decimais.</small>
+                        </div>
+
+                        <div class="input-group">
+                            <label 
+                                class="sr-only" 
+                                for="dateM">Data</label>
+                            <input 
+                                type="date" 
+                                id="dateM" 
+                                name="dateM"
+                            />
+                        </div>
+
+                        <div class="input-group actions">
+                            <a 
+                            onclick="Modal.close()"
+                            href="#" 
+                            class="button cancel">Cancelar</a>
+                            <button>Salvar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <footer><p>dev.finance$</p>
+            <p>Desenvolvido por Diego Ferreira</p>
         </footer>
 
         <script src="./scripts.js"></script>

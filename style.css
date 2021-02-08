@@ -3,6 +3,7 @@
     --green: #49aa26;
     --light-green: #3dd705;
     --red: #e92929;
+    --font-color-base: #363f5f;
 }
 
 * {
@@ -39,15 +40,23 @@ body {
     margin: auto;/*ajuste horizontal*/
 }
 /*Titles ---------------------------*/
+h2 {
+    margin-top: 3.2rem;/*espaçamento em cima*/
+    margin-bottom: 0.8rem;/*espaçamento embaixo*/
+    color: var(--dark-blue);
 
+    font-weight: normal;/*peso da fonte*/
+}
 /*links an buttons*/
 a {
     color: var(--green);
     text-decoration: none;
+    padding-right: 1rem;
 }
 
 a:hover {
     color: var(--light-green);
+    text-decoration: underline;
 }
 
 button {
@@ -93,13 +102,7 @@ button:hover {
     opacity: 1;
 }
 
-h2 {
-    margin-top: 3.2rem;/*espaçamento em cima*/
-    margin-bottom: 0.8rem;/*espaçamento embaixo*/
-    color: var(--dark-blue);
 
-    font-weight: normal;/*peso da fonte*/
-}
 /*Header ---------------------------*/
 header {
     background: #2d4a22;
@@ -278,6 +281,24 @@ input {
     width: 48%;
 }
 
+#title-grafics {
+    padding: 2rem 2rem 0 0;
+}
+
+/* Graficos ===================== */
+#graphics {
+    margin-top: 2rem;
+}
+
+/* Cards (graficos) ===================== */
+#graphics .card {
+    background: white;
+    padding: 1.5rem 2rem;
+    border-radius: 0.25rem;
+    margin-bottom: 2rem;
+    align-items: center;
+}
+
 /*footer ---------------------------*/
 footer {
     text-align: center;
@@ -285,12 +306,6 @@ footer {
     color: var(--dark-blue);
 
     opacity: 0.6;
-}
-
-#developer {
-    text-align: center;
-    padding: 4rem 0 25rem;
-    color: black
 }
 
 
@@ -301,6 +316,11 @@ footer {
     }
 
     #balance {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+    #graphics {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 2rem;
