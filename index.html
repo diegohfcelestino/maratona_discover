@@ -51,7 +51,7 @@
                 
             </section>  
 
-            <section id="transaction">
+            <section id="options-transactions">
                 <h2 class="sr-only">Transações</h2>
 
                 <a href="#" 
@@ -60,21 +60,29 @@
                 <!--Adicionado a transação parcelada-->
                 <a href="#" 
                 onclick="Modal.openMult()"
-                class="button new">+ Nova Transação Parcelada</a>        
-            
+                class="button new">+ Nova Transação Parcelada</a>   
+                
+                <!--Adicionado o botão e link para baixar o extrato-->
+                
+                <a href="#" class="button extract" onclick="Transaction.extract()">
+                    <img src="./assets/get_app-24px.svg" alt="Gerar Extrato" />
+                    <span>Gerar extrato</span>
+                  </a>
+
                 <table id="data-table">
                     <thead>
                         <tr>
                             <th>Descrição</th>
                             <th>Valor</th>
                             <th>Data</th>
-                            <th></th>
+                            <th><img onclick="Modal.openFilter()" src="./assets/filtro.png" alt="Filtrar transações"></th>
                         </tr>
                     </thead>
                     <tbody>
                     </tbody>
+                    <tfoot>
+                    </tfoot>
                 </table>
-
             </section>
             <!--Adicionado os gráficos-->
             <div>
@@ -94,9 +102,7 @@
                     <h2 class="sr-only">Gráfico dos totais</h2>
                     <div id="total_chart_div"></div>
                 </div>
-            </section>
-
-            
+            </section>            
         </main>
 
         <div class="modal-overlay simple">
@@ -215,6 +221,127 @@
                             href="#" 
                             class="button cancel">Cancelar</a>
                             <button>Salvar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-overlay edit">
+            <div class="modal">
+                <div id="form">
+                    <h2>Editar Transação</h2>
+                    <form action="" onsubmit="Form.submit(event, 'edit')">
+                        <div class="input-group">
+                            <label 
+                                class="sr-only" 
+                                for="descriptionE">Descrição</label>
+                            <input 
+                                type="text" 
+                                id="descriptionE" 
+                                name="descriptionE"
+                                placeholder="Descrição"
+                            />
+                        </div>
+
+                        <div class="input-group">
+                            <input 
+                                class="sr-only"
+                                type="number"
+                                id="idE" 
+                                name="idE"
+                            />
+                        </div>
+
+                        <div class="input-group">
+                            <label 
+                                class="sr-only" 
+                                for="amountE">Valor</label>
+                            <input 
+                                type="number"
+                                step="0.01"
+                                id="amountE" 
+                                name="amountE"
+                                placeholder="0,00"
+                            />
+                            <small class="help">Use o sinal - (negativo) para despesas e , (vírgula) para casas decimais.</small>
+                        </div>
+
+                        <div class="input-group">
+                            <label 
+                                class="sr-only" 
+                                for="dateE">Data</label>
+                            <input 
+                                type="date" 
+                                id="dateE" 
+                                name="dateE"
+                            />
+                        </div>
+
+                        <div class="input-group actions">
+                            <a 
+                            onclick="Modal.close()"
+                            href="#" 
+                            class="button cancel">Cancelar</a>
+                            <button>Salvar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-overlay filter">
+            <div class="modal">
+                <div id="form">
+                    <h2>Filtro</h2>
+                    <form action="" onsubmit="Form.submit(event, 'filter')">
+                        <div class="input-group">
+                            <label 
+                                for="dateStart">Data Inicial:</label>
+                            <input 
+                                type="date" 
+                                id="dateStart" 
+                                name="dateStart"
+                            />
+                        </div>
+                        <div class="input-group">
+                            <label 
+                                for="dateEnd">Data Final</label>
+                            <input 
+                                type="date" 
+                                id="dateEnd" 
+                                name="dateEnd"
+                            />
+                        </div>
+                        <hr>
+                        <div class="input-group">
+                            <label 
+                                for="partM">Itens por página</label>
+                            <input 
+                                type="number"
+                                step="1"
+                                id="itensPerPage" 
+                                name="itensPerPage"
+                                placeholder="Itens por página"
+                                min="1"
+                            />
+                        </div>
+
+                        <div class="input-group actions">
+                            <a 
+                            onclick="Modal.close()"
+                            href="#" 
+                            class="button cancel">Cancelar</a>
+                            <button>Filtrar</button>
+                        </div>
+
+                        <div class="input-group">
+                            <input 
+                                class="sr-only"
+                                type="number"
+                                id="page" 
+                                name="page"
+                            />
                         </div>
                     </form>
                 </div>

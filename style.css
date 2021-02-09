@@ -4,6 +4,10 @@
     --light-green: #3dd705;
     --red: #e92929;
     --font-color-base: #363f5f;
+    --svg-filter: invert(30%) sepia(79%) saturate(2476%) hue-rotate(
+      100deg
+    )
+    brightness(118%) contrast(119%);
 }
 
 * {
@@ -39,6 +43,7 @@ body {
     width: min(90vw, 800px); /*largura com responsividade*/
     margin: auto;/*ajuste horizontal*/
 }
+
 /*Titles ---------------------------*/
 h2 {
     margin-top: 3.2rem;/*espaçamento em cima*/
@@ -47,6 +52,7 @@ h2 {
 
     font-weight: normal;/*peso da fonte*/
 }
+
 /*links an buttons*/
 a {
     color: var(--green);
@@ -57,6 +63,10 @@ a {
 a:hover {
     color: var(--light-green);
     text-decoration: underline;
+}
+
+.page {
+    padding-right: 0;
 }
 
 button {
@@ -102,7 +112,6 @@ button:hover {
     opacity: 1;
 }
 
-
 /*Header ---------------------------*/
 header {
     background: #2d4a22;
@@ -114,6 +123,7 @@ header {
     color: #fff;
     font-weight: 100;
 }
+
 /*Balance ---------------------------*/
 #balance  {
     margin-top: -8rem;/*para subir os container usa numero negativo*/
@@ -123,15 +133,18 @@ header {
     color: white;
     margin-top: 0;
 }
+
 /*Cards ---------------------------*/
 .card {
     background: white;
     padding: 1.5rem 2rem;
     border-radius: 0.25rem;/*arredondamento das bordas*/
+
     margin-bottom: 2rem;
 
     color: var(--dark-blue);
 }
+
 .card h3 {
     font-weight: normal;
     font-size: 1rem;/*tamanho da fonte*/
@@ -153,18 +166,32 @@ header {
     color: white;
 }
 
-#transaction {
+/*table ---------------------------*/
+#options-transactions {
     display: block;
     width: 100%;
     overflow: auto;
 }
-/*table ---------------------------*/
+
+  a.button.extract {
+    color: var(--font-color-base);
+    float: right;
+    filter: var(--svg-filter);
+  }
+  
+  a.button.extract:hover {
+    filter: brightness(150%);
+  }
+
 #data-table {
     width: 100%;/*usar todo o espaço do container*/
     border-spacing: 0 0.5rem;/*espaço de linhas*/
     color: #969cb3;
 }
 
+#data-table img:hover{
+    cursor: pointer;
+}
 /*Pseudo class --para arendodar as bordas no sentido horário*/
 table thead tr th:first-child,
 table tbody tr td:first-child
@@ -190,6 +217,7 @@ table thead th {
 table tbody tr {
     opacity: 0.7;
 }
+
 table tbody tr:hover {
     opacity: 1;
 }
@@ -198,14 +226,27 @@ table tbody td {
     background: white;
     padding: 1rem 2rem;
 }
+
 td.description {
     color: var(--dark-blue);
 }
+
 td.income {
     color: #12a454;
 }
+
 td.expense {
     color:red;
+}
+
+td.commands img{
+    padding-right: 1rem;
+}
+
+table tfoot tr{
+    align-items: center;
+    text-align: center;
+    align-items: center;
 }
 
 /*Modal -------------------*/
@@ -265,9 +306,15 @@ input {
     margin-top: 0.8rem;
 }
 
-.input-group small {
-    opacity: 0.4;
+.input-edit {
+    position: fixed;
+    top: 0;
+    visibility: hidden;
+    opacity: 0;
+}
 
+.input-group .help{
+    opacity: 0.4;
 }
 
 .input-group.actions {
@@ -282,7 +329,8 @@ input {
 }
 
 #title-grafics {
-    padding: 2rem 2rem 0 0;
+    padding: auto;
+    opacity: 0.4;
 }
 
 /* Graficos ===================== */
@@ -320,6 +368,7 @@ footer {
         grid-template-columns: repeat(3, 1fr);
         gap: 2rem;
     }
+
     #graphics {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
