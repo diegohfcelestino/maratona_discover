@@ -143,9 +143,9 @@ const Transaction = {
 
     extract() {
         const transactions = Transaction.all;
-        const incomes = Transaction.incomes();
-        const expenses = Transaction.expenses();
-        const total = Transaction.total();
+        const incomes = Transaction.incomes(transactions);
+        const expenses = Transaction.expenses(transactions);
+        const total = Transaction.total(transactions);
      
         const currentDate = new Date();
      
@@ -158,7 +158,7 @@ const Transaction = {
           seconds: currentDate.getSeconds(),
         };
      
-        let text = `Extrato - Data: ${`${date.day}/${date.month}/${date.year} - ${date.hours}:${date.minutes}:${date.seconds}\n`}`;
+        let text = `Extrato dev.finance$ - Data: ${`${date.day}/${date.month}/${date.year} - ${date.hours}:${date.minutes}:${date.seconds}\n`}`;
      
         text += transactions.reduce(
           (txt, transaction) =>
