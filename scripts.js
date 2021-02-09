@@ -812,14 +812,14 @@ function drawChart(graficsBig) {
     data.addColumn('number', 'Slices');
     color=[]
     if (graficsBig){
-        title='Entradas (TOP 5)'
+        title='A cinco maiores entradas'
         listToGrafics=calculations.transationsInOrder(sumIncomeExpense[0], graficsBig)
         div='income_chart_div'
         correction=1
         color=['darkgreen','forestgreen','green','lime','chartreuse']
     }
     else{
-        title='Saídas (TOP 5)'
+        title='As cinco maiores saídas'
         listToGrafics=calculations.transationsInOrder(sumIncomeExpense[1], graficsBig)
         div='expense_chart_div'
         correction=-1
@@ -882,7 +882,7 @@ function drawChartTotal() {
 
 
     if (incomesAmount>=expensesAmount){
-        title='Carteira SAUDAVEL'
+        title='Carteira está Saudavel'
         color=['DarkRed','forestgreen','darkgreen']
         data.addRows([
             ['Saídas do período', expensesAmount]
@@ -895,7 +895,7 @@ function drawChartTotal() {
         ]);
     }
     else{
-        title='Carteira EM RISCO'
+        title='Carteira está em Risco'
         color=['forestgreen','DarkRed','Red']
         data.addRows([
             ['Entradas do período', incomesAmount]
