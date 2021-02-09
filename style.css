@@ -173,10 +173,14 @@ header {
     overflow: auto;
 }
 
-  a.button.extract {
+a.button.extract {
     color: var(--font-color-base);
     float: right;
     filter: var(--svg-filter);
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   a.button.extract:hover {
