@@ -923,3 +923,6 @@ function drawChartTotal() {
     var chart = new google.visualization.PieChart(document.getElementById('total_chart_div'));
     chart.draw(data, options);
 }
+
+
+
